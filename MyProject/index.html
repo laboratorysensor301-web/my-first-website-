@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Grand Journal | 3D Flip</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="color-picker-container">
+    <label for="bookColor">Book Color:</label>
+    <input type="color" id="bookColor" value="#5a433d" />
+  </div>
+
+  <div class="mode-selector">
+    <label>Page Mode:</label>
+    <button class="mode-btn active" data-mode="light">Light Mode</button>
+    <button class="mode-btn" data-mode="dark">Dark Mode</button>
+    <button class="mode-btn" data-mode="sepia">Sepia Mode</button>
+  </div>
+
+  <div class="book" id="book">
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
