@@ -1,0 +1,161 @@
+body {
+  background: #b3a380;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Georgia", serif;
+}
+
+/* Color Picker Container */
+.color-picker-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  color: #5a433d;
+}
+
+.color-picker-container label {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.color-picker-container input[type="color"] {
+  width: 50px;
+  height: 40px;
+  border: 2px solid #5a433d;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Mode Selector */
+.mode-selector {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  color: #5a433d;
+}
+
+.mode-selector label {
+  font-weight: bold;
+}
+
+.mode-btn {
+  padding: 8px 12px;
+  border: 2px solid #5a433d;
+  background: white;
+  color: #5a433d;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Georgia", serif;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+  background: #f0e6d2;
+}
+
+.mode-btn.active {
+  background: #5a433d;
+  color: #e2d7bd;
+}
+
+/* The Book Container */
+.book {
+  position: relative;
+  width: 400px; /* Width of one page */
+  height: 550px;
+  transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-style: preserve-3d;
+  /* Initial position (closed) */
+  transform: translateX(0%); 
+}
+
+/* When open, shift the book right so the spine stays centered */
+.book.open {
+  transform: translateX(50%);
+}
+
+/* Individual Paper Leaf */
+.leaf {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.leaf.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* Page Sides */
+.page-front,
+.page-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  padding: 40px;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: inset 5px 0 15px rgba(0,0,0,0.05);
+}
+
+.page-front {
+  z-index: 2;
+  background: linear-gradient(to right, #e2d7bd 0%, #fff9f2 10%, #fff9f2 100%);
+  border-radius: 0 5px 5px 0;
+}
+
+.page-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+  background: linear-gradient(to left, #e2d7bd 0%, #f7f2e7 10%, #f7f2e7 100%);
+  border-radius: 5px 0 0 5px;
+}
+
+/* Cover Styling */
+.leaf:first-child .page-front,
+.leaf:last-child .page-back {
+  background: #5a433d;
+  color: #e2d7bd;
+}
+
+.leaf:first-child .page-front h2,
+.leaf:last-child .page-back h2 {
+  color: #e2d7bd;
+  border-bottom: 1px solid #7a5e56;
+}
+
+/* Typography */
+h2 { margin-top: 0; color: #5a433d; border-bottom: 1px solid #e2d7bd; padding-bottom: 10px; }
+p { color: #6d5c4b; line-height: 1.7; font-size: 18px; }
